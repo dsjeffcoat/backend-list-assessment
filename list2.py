@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Diarte Jeffcoat w/ help from [Stack Overflow] (https://stackoverflow.com/questions/44858453/python-removing-adjacent-numbers?noredirect=1&lq=1) & (https://stackoverflow.com/questions/7237875/linear-merging-for-lists-in-python)"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -28,8 +28,13 @@ __author__ = "???"
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    previous_index = ''
+    for index in nums[:]:
+        if index == previous_index:
+            nums.remove(index)
+        else:
+            previous_index = index
+    return nums
 
 
 # E. linear_merge
@@ -44,8 +49,15 @@ def remove_adjacent(nums):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    final_list = []
+    i = 0
+    while len(list1) and len(list2):
+        if list1[i] < list2[i]:
+            final_list.append(list1.pop(i))
+        else:
+            final_list.append(list2.pop(i))
+    final_list.extend(list1 + list2)
+    return final_list
 
 
 # Provided simple test() function used in main() to print
